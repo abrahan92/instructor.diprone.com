@@ -1,0 +1,84 @@
+
+<% content_for :ribbon do %>
+<!-- RIBBON -->
+<div id="ribbon">
+
+  <span class="ribbon-button-alignment"> 
+    <span id="refresh" class="btn btn-ribbon" data-action="resetWidgets" data-title="refresh"  rel="tooltip" data-placement="bottom" data-original-title="<i class='text-warning fa fa-warning'></i> Warning! This will reset all your widget settings." data-html="true">
+      <i class="fa fa-refresh"></i>
+    </span> 
+  </span>
+
+  <!-- breadcrumb -->
+  <ol class="breadcrumb">
+    <li>Inicio</li><li>Instructores</li><li><%= @instructores + 1 %></li>
+  </ol>
+
+</div>
+
+<% end %>
+
+<div id="content">
+
+  <div class="row">
+  
+    <div class="col-sm-12">
+
+        <div class="well well-sm">
+				
+			<%= form_for(@user_admin) do |f| %>
+
+			   <input name="user[email]" id="user_email" type="email" placeholder="Email" class="form-control input-lg">
+			   <br>
+         <span style="font-size:15px; text-decoration:underline; ">Rol del usuario</span>
+         <select style="margin-top:10px;" name="rolselect" id="rolselect" class="form-control input-lg rolselect">
+           <option value="1">Administrador</option>
+           <option value="2">Instructor</option>
+         </select>
+         <br>
+         <input name="user[rol_id]" id="user_rol_id" type="text" class="form-control input-lg" value="1">
+         <input name="user[id_padre]" id="user_id_padre" type="text" class="form-control input-lg" value="<%=current_user.id%>">
+         <input name="user[ventas]" id="user_ventas" type="text" class="form-control input-lg" value="0">
+         <input name="user[status]" id="user_status" type="text" class="form-control input-lg" value="activo">
+			   <div class="input-group">
+
+                    <span class="input-group-addon"><i class="fa fa-graduation-cap fa-lg fa-fw"></i></span>
+                        <button type="submit" class="form-control input-lg btn btn-lg btn-success">Añadir</button>
+				</div>
+
+			<%end%>		
+
+        </div>
+
+	</div>
+
+  </div>
+
+</div>
+
+<style>
+  #user_rol_id,#user_id_padre,#user_ventas,#user_status{
+    display: none;
+  }
+
+</style>
+
+<% content_for :scripts do %>
+  <script type="text/javascript">
+
+    $("#rolselect").change(function() {
+      
+        var cat = $( "#rolselect option:selected" ).val();
+
+        $("#user_rol_id").val(cat);
+        if(cat == 1){
+          $("#user_status").val('activo');
+        }else{
+          $("#user_status").val('inactivo');
+        }
+    });
+
+  </script>
+<%end%>
+
+

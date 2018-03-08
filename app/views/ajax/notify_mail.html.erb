@@ -1,0 +1,36 @@
+<%if @mensaje.count != 0 %>
+
+<ul class="notification-body">
+<% @mensaje.each do |men| %>
+
+<%if men.user_id == current_user.id %>
+
+ <%if men.status == '0'%>
+	<li>
+		<span class="<%if men.status == '0'%>unread<%else%>read<%end%>">
+			<a href="/users/<%=current_user.id%>/mensajes/<%=men.id%>/edit" class="msg">
+				<%= image_tag 'avatars/4.png', alt: '', class: 'air air-top-left margin-top-5', width: '40', height: '40' %>
+				<span class="from">Equipo Diprone<i class="icon-paperclip"></i></span>
+				<time><%=%></time>
+				<span class="subject"><%=men.sujeto%> - <%if men.status == '1' %><i style="color:green;" class="fa fa-check" aria-hidden="true"></i> Leido<%else%> <i style="color:red;" class="fa fa-times" aria-hidden="true"></i> No Leido<%end%></span>
+				<span class="msg-body"><%=men.mensaje%></span>
+			</a>
+		</span>
+	</li>
+<%end%>
+<%end%>
+<%end%>
+</ul>
+<%else%>
+       
+
+          <div class="alert alert-transparent">
+          <br>
+            <h4 style="text-align:justify;">Actualmente no tienes mensajes por leer en tu bandeja de entrada </h4>
+            
+            <p style="font-size:15px; padding:20px; text-align:center;">Gracias por pertenecer a la familia Diprone !!!</p>
+           
+          </div>
+
+          <i class="fa fa-envelope-o fa-4x fa-border"></i>
+<%end%>

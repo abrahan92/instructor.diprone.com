@@ -1,0 +1,213 @@
+
+                          <!-- Informacion basica del curso -->
+                            <%= form_for [@user, @curso], :html => {:class => "smart-form"} do |f| %>
+                                    
+                                      
+                              <div class="col-lg-12" >
+
+                                  <!-- titulo -->
+
+                                    <div class="col-lg-12" style="margin-top:30px;">
+                                      
+                                      <label class="input"> <i class="icon-prepend" style="padding-right:20px;">Titulo</i>
+                                           
+                                            <%= f.text_field :titulo, :style => "padding-left:55px;", :disabled=>true %>
+                                      </label>
+
+                                    </div>
+
+                                  <!-- titulo -->
+
+
+
+                                  <!-- Subtitulo -->
+
+                                    <div class="col-lg-12" style="margin-top:30px;">
+                                      
+                                      <label class="input"> <i class="icon-prepend" style="padding-right:42px;">Subtitulo</i>
+                                            <%= f.text_field :subtitulo, :style => "padding-left:75px;", :disabled=>true %>
+                                      </label>
+
+                                    </div>
+
+                                  <!-- Subtitulo -->
+
+
+                                  <div class="col-lg-12">
+                                    
+                                        <div class="alert alert-info fade in" style="margin-top:30px;">
+                                            <button class="close" data-dismiss="alert">
+                                              ×
+                                            </button>
+                                            <i class="fa-fw fa fa-info"></i>
+                                            A continuación podrá cambiar el curso de idioma, categoria y subcategoria
+                                          </div>
+
+                                  </div>
+
+                                  <!-- Idioma, Categoria y Subcategoria DesBloqueados -->
+
+                                    <div class="col-lg-12" style="margin-top:-10px;">
+                                      
+                                        <div class="col-lg-4">
+                                          
+                                          <div class="input-group">
+                                            <span class="input-group-addon"><i class="fa fa-globe fa-lg fa-fw"></i></span>
+
+
+                                             <%= f.text_field :idioma, class: "form-control", :style => "padding-left:10px;", :disabled=>true %>
+                                           
+                                          </div>
+
+                                        </div>
+
+                                       
+                                          
+                                        <div class="col-lg-4">
+                                          
+                                          <div class="input-group">
+                                            <span class="input-group-addon"><i class="fa fa-globe fa-lg fa-fw"></i></span>
+
+                                                  
+                                                 
+                                            <%= f.text_field :categoria, class: "form-control" , :style => "padding-left:10px;", :disabled=>true %>
+                                          </div>
+
+                                        </div>
+
+                                       
+
+                                        
+                                          
+                                        <div class="col-lg-4">
+                                          
+                                          <div class="input-group">
+                                            <span class="input-group-addon"><i class="fa fa-globe fa-lg fa-fw"></i></span>
+
+                                                  
+                                                 
+                                            <%= f.text_field :subcategoria, class: "form-control", :style => "padding-left:10px;", :disabled=>true  %>
+                                          </div>
+
+                                        </div>
+
+                                        
+
+
+                                    </div>
+
+
+
+                                  <!-- Idioma, Categoria y Subcategoria DesBloqueados -->
+
+                                  <div class="col-lg-12">
+                                    
+                                        <div class="alert alert-warning fade in" style="margin-top:30px;">
+                                            <button class="close" data-dismiss="alert">
+                                              ×
+                                            </button>
+                                            <i class="fa-fw fa fa-info"></i><strong>Nivel de Instruccion</strong><br><br>
+Especifica el nivel del contenido del curso para que los estudiantes puedan decidir si se trata del curso apropiado para ellos.
+                                          </div>
+
+                                  </div>
+
+                                  <!-- Nivel del Curso -->
+
+                                    <div class="col-lg-12" >
+                                      
+                                      
+                                    <%= f.text_field :nivel, class: "form-control " , :style => "padding-left:20px;", :disabled=>true %>
+
+
+                                    </div>
+
+                                  <!-- Nivel del Curso -->
+
+
+
+
+                                  <div class="col-lg-12">
+                                    
+                                        <div class="alert alert-success fade in" style="margin-top:30px;">
+                                            <button class="close" data-dismiss="alert">
+                                              ×
+                                            </button>
+                                            <i class="fa-fw fa fa-info"></i>
+                                                Resumen del Curso<br><br>
+                                                Resalta el contenido del curso, cómo se imparte, sus beneficios y por qué deberían inscribirse los estudiantes.
+                                          </div>
+
+                                  </div>
+
+                                  <!-- Resumen del Curso -->
+
+                                    <div class="col-lg-12">
+                                      
+                                      
+                                           
+                                           
+                                          <div class="form-group">
+                                            <div class="input-group">
+                                              <span class="input-group-addon"><i class="fa fa-file-text-o  fa-lg fa-fw"></i></span>
+
+
+
+
+                                               <%= f.text_area :resumen, autocomplete: "off", class: "form-control input-lg", placeholder: "Resumen del Curso", :style => "padding-left:20px; padding-top:20px;", rows: "10", :disabled=>true %>
+                                                
+                                               
+
+                                            </div>
+                                          </div>
+                                     
+
+                                    </div>
+
+                                  <!-- Resumen del Curso -->
+
+                                  <!-- Estatus -->
+
+                                    <div class="col-lg-12" style="display:none; " >
+
+                                      <%= f.text_field :status %>
+
+                                    </div>
+
+                                  <!-- Estatus -->
+
+                                  <!-- botones para guardar -->
+
+
+                                      <div class="col-lg-12" style="margin-top:20px;">
+                                        
+
+
+                                        <div class="col-lg-4">
+                                          
+                                              <a href="/users/<%=current_user.id%>/cursos" style="height:40px;"  class="btn btn-danger btn-md col-lg-12" >
+                                             <span style="font-size:20px;">Atrás</span>
+                                            </a>
+
+                                        </div>
+                                          
+                                          
+                                       
+                                      </div>
+
+                                  <!-- botones para guardar -->
+
+
+
+
+                            
+
+
+                              </div>
+
+
+
+                                   
+                            <%end%>
+                          <!-- Informacion basica del curso -->
+                         

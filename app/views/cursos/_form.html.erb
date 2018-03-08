@@ -1,0 +1,70 @@
+<%= form_for(curso) do |f| %>
+  <% if curso.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(curso.errors.count, "error") %> prohibited this curso from being saved:</h2>
+
+      <ul>
+      <% curso.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :titulo %>
+    <%= f.text_field :titulo %>
+  </div>
+
+  <div class="field">
+    <%= f.label :subtitulo %>
+    <%= f.text_field :subtitulo %>
+  </div>
+
+  <div class="field">
+    <%= f.label :idioma %>
+    <%= f.text_field :idioma %>
+  </div>
+
+  <div class="field">
+    <%= f.label :categoria %>
+    <%= f.text_field :categoria %>
+  </div>
+
+  <div class="field">
+    <%= f.label :subcategoria %>
+    <%= f.text_field :subcategoria %>
+  </div>
+
+  <div class="field">
+    <%= f.label :nivel %>
+    <%= f.text_field :nivel %>
+  </div>
+
+  <div class="field">
+    <%= f.label :status %>
+    <%= f.text_field :status %>
+  </div>
+
+  <div class="field">
+    <%= f.label :resumen %>
+    <%= f.text_field :resumen %>
+  </div>
+
+  <div class="field">
+    <%= f.label :portada_uid %>
+    <%= f.text_field :portada_uid %>
+  </div>
+
+  <div class="field">
+    <%= f.label :portada_name %>
+    <%= f.text_field :portada_name %>
+  </div>
+
+
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
+

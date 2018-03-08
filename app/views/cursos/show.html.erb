@@ -1,0 +1,166 @@
+<% content_for :ribbon do %>
+<!-- RIBBON -->
+<div id="ribbon">
+
+  <span class="ribbon-button-alignment"> 
+    <span id="refresh" class="btn btn-ribbon" data-action="resetWidgets" data-title="refresh"  rel="tooltip" data-placement="bottom" data-original-title="<i class='text-warning fa fa-warning'></i> Warning! This will reset all your widget settings." data-html="true">
+      <i class="fa fa-refresh"></i>
+    </span> 
+  </span>
+
+  <!-- breadcrumb -->
+  <ol class="breadcrumb">
+    <li>Inicio</li><li>Cursos</li><li><%= @curso.titulo %></li>
+  </ol>
+  <!-- end breadcrumb -->
+
+  <!-- You can also add more buttons to the
+  ribbon for further usability
+
+  Example below:
+
+  <span class="ribbon-button-alignment pull-right">
+  <span id="search" class="btn btn-ribbon hidden-xs" data-title="search"><i class="fa-grid"></i> Change Grid</span>
+  <span id="add" class="btn btn-ribbon hidden-xs" data-title="add"><i class="fa-plus"></i> Add</span>
+  <span id="search" class="btn btn-ribbon" data-title="search"><i class="fa-search"></i> <span class="hidden-mobile">Search</span></span>
+  </span> -->
+
+</div>
+<!-- END RIBBON -->
+<% end %>
+
+
+<!-- Contenido del Curso -->
+
+<div id="content">
+
+  <div class="row">
+  
+    <div class="col-sm-12">
+
+        <div class="well well-sm">
+  
+          <div class="row">
+
+
+                <!-- MAIN CONTENT -->
+
+
+                  </div>
+                  <!-- end row -->
+                  
+                  <div class="row">
+
+                    <div class="col-sm-9">
+
+                     
+
+                        <div class="row">
+                          <div class="col-md-4">
+                            <%= image_tag 'superbox/superbox-full-15.jpg', class: 'img-responsive', alt: 'img' %>
+                            <ul class="list-inline padding-10">
+                              <li>
+                                <i class="fa fa-calendar"></i>
+                                <a href="javascript:void(0);"> <%= @curso.created_at.strftime("%F") %> </a>
+                              </li>
+                              <li>
+                                <i class="fa fa-comments"></i>
+                                <a href="javascript:void(0);"> 38 Comments </a>
+                              </li>
+                            </ul>
+                          </div>
+                          <div class="col-md-8 padding-left-0">
+                            <h2 class="margin-top-0"><span style="color:#6ab344;"> <span style="text-decoration:underline; font-style:italic; color:black;">Titulo</span>: <%=@curso.titulo%> </span></h2>
+                            <h3 class="margin-top-0"><span style="color:#6ab344;"> <span style="text-decoration:underline; font-style:italic;">SubTitulo</span>: <%=@curso.subtitulo%> </span></h3>
+                            <h3 class="margin-top-0">
+                              <small class="font-xs"><i>Published by <a href="javascript:void(0);">John Doe</a></i></small>
+                            </h3>
+
+
+
+                            <p>
+                              At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga. 
+
+                              <br><br>Et harum quidem rerum facilis est et expedita distinctio lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut non libero consectetur adipiscing elit magna. Sed et quam lacus. Fusce condimentum eleifend enim a feugiat. Pellentesque viverra vehicula sem ut volutpat. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut non libero magna. Sed et quam lacus. Fusce condimentum eleifend enim a feugiat.
+                              <br><br>
+                            </p>
+                            <a class="btn btn-primary" href="javascript:void(0);"> Read more </a>
+                            <a class="btn btn-warning" href="javascript:void(0);"> Edit </a>
+                            <a class="btn btn-success" href="javascript:void(0);"> Publish </a>
+                          </div>
+                        </div>
+                        
+
+                      
+
+                    </div>
+
+
+
+                <!-- END MAIN CONTENT -->
+
+          </div>
+
+        </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- Contenido del Curso -->
+
+
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Titulo:</strong>
+  <%= @curso.titulo %>
+</p>
+
+<p>
+  <strong>Subtitulo:</strong>
+  <%= @curso.subtitulo %>
+</p>
+
+<p>
+  <strong>Idioma:</strong>
+  <%= @curso.idioma %>
+</p>
+
+<p>
+  <strong>Categoria:</strong>
+  <%= @curso.categoria %>
+</p>
+
+<p>
+  <strong>Subcategoria:</strong>
+  <%= @curso.subcategoria %>
+</p>
+
+<p>
+  <strong>Nivel:</strong>
+  <%= @curso.nivel %>
+</p>
+
+<p>
+  <strong>Status:</strong>
+  <%= @curso.status %>
+</p>
+
+<p>
+  <strong>Resumen:</strong>
+  <%= @curso.resumen %>
+</p>
+
+<p>
+  <strong>Portada uid:</strong>
+  <%= @curso.portada_uid %>
+</p>
+
+<p>
+  <strong>Portada name:</strong>
+  <%= @curso.portada_name %>
+</p>
+
+<a href="/users/<%=current_user.id%>/cursos/<%=@curso.id%>/edit">edit</a>
+<%= link_to 'Back', user_cursos_path %>

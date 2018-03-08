@@ -1,0 +1,146 @@
+ <% content_for :ribbon do %>
+<!-- RIBBON -->
+<div id="ribbon">
+
+  <span class="ribbon-button-alignment"> 
+    <span id="refresh" class="btn btn-ribbon" data-action="resetWidgets" data-title="refresh"  rel="tooltip" data-placement="bottom" data-original-title="<i class='text-warning fa fa-warning'></i> Warning! This will reset all your widget settings." data-html="true">
+      <i class="fa fa-refresh"></i>
+    </span> 
+  </span>
+
+  <!-- breadcrumb -->
+  <ol class="breadcrumb">
+    <li>Inicio</li><li>Clases</li><li><%= @clase.titulo %></li>
+  </ol>
+  <!-- end breadcrumb -->
+
+  <!-- You can also add more buttons to the
+  ribbon for further usability
+
+  Example below:
+
+  <span class="ribbon-button-alignment pull-right">
+  <span id="search" class="btn btn-ribbon hidden-xs" data-title="search"><i class="fa-grid"></i> Change Grid</span>
+  <span id="add" class="btn btn-ribbon hidden-xs" data-title="add"><i class="fa-plus"></i> Add</span>
+  <span id="search" class="btn btn-ribbon" data-title="search"><i class="fa-search"></i> <span class="hidden-mobile">Search</span></span>
+  </span> -->
+
+</div>
+<!-- END RIBBON -->
+<% end %>
+
+<div id="content">
+
+  <div class="row">
+  
+    <div class="col-lg-12">
+
+			<div id="secciones" class="well well-sm" style="padding-right:30px;">
+
+				<form class="smart-form">
+
+	
+
+
+
+
+
+                              <div class="col-lg-12">
+                                <div class="form-group">
+                                  <div class="input-group">
+
+                                    <span class="input-group-addon"><i class="fa fa-text-width fa-lg fa-fw"></i></span>
+
+
+                                   <input style="padding-left:20px;" name="clase[titulo]" id="clase_titulo" type="text" class="form-control" placeholder="Titulo" value="<%=@clase.titulo%>" disabled>
+
+                                  </div>
+                                </div>
+                              </div>
+
+
+                              <div class="col-lg-12" style="margin-top:15px;">
+                                <div class="form-group">
+                                  <div class="input-group">
+
+                                    <span class="input-group-addon"><i class="fa fa-list fa-lg fa-fw"></i></span>
+
+
+                                  
+
+                                   <textarea disabled style="padding-top:20px; padding-left:20px;" placeholder="Resumen de la Clase" name="clase[resumen]" id="clase_resumen" type="text" rows="5" class="form-control"><%=@clase.resumen%></textarea>
+
+                                  </div>
+                                </div>
+                              </div>
+
+
+                              <div class="col-lg-12" style="margin-top:15px;">
+
+		                        
+
+                              </div>
+
+
+                              <div class="col-lg-12" >
+								
+								<%= render partial: 'layouts/validacionarchivoclase' %>
+
+
+                              </div>
+
+                           
+
+
+
+
+
+                              <input name="clase[seccion_id]" id="clase_seccion_id" type="text" placeholder="id curso">
+
+
+
+
+				
+
+
+				
+
+				
+
+         <a href="/users/<%= current_user.id %>/cursos/<%=@curso.id%>/seccions/<%=@seccion.id%>/clases" style="height:45px; margin-top:15px;" type="submit" class="btn btn-warning btn-lg" >
+                         <span style="font-size:20px;">Atrás</span>
+                        </a>
+
+
+				</form>
+
+			</div>
+	  </div>
+   </div>
+</div>
+
+<style>
+	#clase_seccion_id{
+		display: none;
+	}
+
+  .archivo{
+    height:50px;
+    padding-bottom: 60px;
+	
+    width:98%;
+  }	
+</style>
+
+
+<% content_for :scripts do %>
+  <script type="text/javascript">
+
+	$("#clase_seccion_id").val(<%=@seccion.id%>);
+</script>
+<%end%>
+
+
+
+
+

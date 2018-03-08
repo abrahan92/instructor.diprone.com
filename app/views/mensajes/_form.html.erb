@@ -1,0 +1,27 @@
+<%= form_for(mensaje) do |f| %>
+  <% if mensaje.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(mensaje.errors.count, "error") %> prohibited this mensaje from being saved:</h2>
+
+      <ul>
+      <% mensaje.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :mensaje %>
+    <%= f.text_field :mensaje %>
+  </div>
+
+  <div class="field">
+    <%= f.label :status %>
+    <%= f.text_field :status %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

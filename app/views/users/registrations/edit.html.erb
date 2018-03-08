@@ -1,0 +1,231 @@
+<% content_for :ribbon do %>
+<!-- RIBBON -->
+<div id="ribbon">
+
+  <span class="ribbon-button-alignment"> 
+    <span id="refresh" class="btn btn-ribbon" data-action="resetWidgets" data-title="refresh"  rel="tooltip" data-placement="bottom" data-original-title="<i class='text-warning fa fa-warning'></i> Warning! This will reset all your widget settings." data-html="true">
+      <i class="fa fa-refresh"></i>
+    </span> 
+  </span>
+
+  <!-- breadcrumb -->
+  <ol class="breadcrumb">
+    <li>Inicio</li><li>Perfil</li>
+  </ol>
+  <!-- end breadcrumb -->
+
+  <!-- You can also add more buttons to the
+  ribbon for further usability
+
+  Example below:
+
+  <span class="ribbon-button-alignment pull-right">
+  <span id="search" class="btn btn-ribbon hidden-xs" data-title="search"><i class="fa-grid"></i> Change Grid</span>
+  <span id="add" class="btn btn-ribbon hidden-xs" data-title="add"><i class="fa-plus"></i> Add</span>
+  <span id="search" class="btn btn-ribbon" data-title="search"><i class="fa-search"></i> <span class="hidden-mobile">Search</span></span>
+  </span> -->
+
+</div>
+<!-- END RIBBON -->
+<% end %>
+
+<!-- MAIN CONTENT -->
+<div id="content">
+
+  <!-- Bread crumb is created dynamically -->
+  <!-- row -->
+  
+  <!-- end row -->
+  
+  <!-- row -->
+  
+  <!-- user form -->
+
+
+
+
+  <div class="row">
+  
+    <div class="col-sm-12">
+  
+  
+        <div class="well well-sm">
+  
+          <div class="row">
+  
+            <div class="col-sm-12 col-md-12 col-lg-6">
+              <div class="well well-light well-sm no-margin no-padding">
+  
+                <div class="row">
+  
+                  <div class="col-sm-12">
+                    <div id="myCarousel" class="carousel fade profile-carousel">
+                      <!--<div class="air air-bottom-right padding-10">
+                        <a href="javascript:void(0);" class="btn txt-color-white bg-color-teal btn-sm"><i class="fa fa-check"></i> Follow</a>&nbsp; <a href="javascript:void(0);" class="btn txt-color-white bg-color-pinkDark btn-sm"><i class="fa fa-link"></i> Connect</a>
+                      </div>-->
+                      <div class="air air-top-left padding-10">
+                        <h4 class="txt-color-white font-md">Jan 1, 2014</h4>
+                      </div>
+                      <ol class="carousel-indicators">
+                        <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+                        <li data-target="#myCarousel" data-slide-to="1" class=""></li>
+                        <li data-target="#myCarousel" data-slide-to="2" class=""></li>
+                      </ol>
+                      <div class="carousel-inner">
+                        <!-- Slide 1 -->
+                        <div class="item active">
+                          <%= image_tag 'demo/s1.jpg', alt: 'demo user' %>
+                        </div>
+                        <!-- Slide 2 -->
+                        <div class="item">
+                          <%= image_tag 'demo/s2.jpg', alt: 'demo user' %>
+                        </div>
+                        <!-- Slide 3 -->
+                        <div class="item">
+                          <%= image_tag 'demo/m3.jpg', alt: 'demo user' %>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+
+  
+                  <div class="col-sm-12">
+  
+                    <div class="row">
+  
+                      <div class="col-sm-3 profile-pic">
+                        
+                    <%if current_user.foto %>
+                    <%= image_tag current_user.foto.url %>
+                    <%else%>
+                    <%= image_tag 'avatars/sunny-big.png', alt: 'demo user' %>
+                    <%end%>
+                        <div class="padding-10">
+                          <h4 class="font-md"><strong>1,543</strong>
+                          <br>
+                          <small>Seguidores</small></h4>
+                          <br>
+                          <h4 class="font-md"><strong>419</strong>
+                          <br>
+                          <small>Conexiones</small></h4>
+                        </div>
+                      </div>
+                      <div class="col-sm-4">
+
+                        <h1><%if current_user.nombre %><%= current_user.nombre %><%else%>Nombre<%end%> <span class="semi-bold"><%if current_user.apellido%><%= current_user.apellido %><%else%>Apellido<%end%></span>
+                        <br>
+                        <small> <%if current_user.profesion%><%=current_user.profesion%><%else%>Profesion<%end%></small>
+                        </h1>
+  
+                        <ul class="list-unstyled">
+                          <li>
+                            <p class="text-muted">
+                              <i class="fa fa-phone"></i> <%if current_user.telefono%><%= current_user.telefono %><%else%>Telefono<%end%>
+                            </p>
+                          </li>
+                          <li>
+                            <p class="text-muted">
+                              <i class="fa fa-envelope"></i>&nbsp;&nbsp;<a href="mailto:<%=current_user.email%>"><%=current_user.email%></a>
+                            </p>
+                          </li>
+                          <li>
+                            <p class="text-muted">
+                              <i class="fa fa-globe" aria-hidden="true"></i> <%if current_user.pais%><%=current_user.pais%><%else%> Pais<%end%>
+                            </p>
+                          </li>
+                          <li>
+                            <p class="text-muted">
+                              <i class="fa fa-home" aria-hidden="true"></i><%if current_user.ciudad%> <%=current_user.ciudad%><%else%> Ciudad<%end%>
+                            </p>
+                          </li>
+                          <li>
+                            <p class="text-muted">
+                             <i class="fa fa-bookmark" aria-hidden="true"></i><%if current_user.codigop%> <%=current_user.codigop%><%else%> Codigo Postal<%end%>
+                            </p>
+                          </li>
+                          <li>
+                            <p class="text-muted">
+                             <i class="fa fa-map-marker" aria-hidden="true"></i> <%if current_user.direccion%><%=current_user.direccion%><%else%> Direccion<%end%>
+                            </p>
+                          </li>
+
+                        </ul>
+                        
+                        <br>
+                        <br>
+                        <br>
+
+                   
+  
+                      </div>
+                      <div class="col-sm-5">
+
+                      
+                        <p class="font-md" style="margin-top:10px; ">
+                          <i style="font-size:20px; text-decoration:underline;">Biografía</i>
+                        </p>
+                        <p style="padding-right:20px; text-align:justify;">
+  
+                          <%=current_user.biografia%>
+  
+                        </p>
+                        
+  
+                      </div>
+
+                      
+  
+                    </div>
+
+
+  
+                  </div>
+  
+                </div>
+  
+
+  
+              </div>
+  
+            </div>
+
+          <div class="col-lg-6">
+            <%= render partial: 'layouts/formuser' %>
+         </div>
+
+
+
+        </div>
+  
+  
+    </div>
+  
+  </div>
+
+
+
+
+
+  <!-- user form -->
+  
+
+
+</div>
+
+
+
+<!-- Perfil del usuario -->
+
+
+
+
+
+
+
+
+
+
+
+
+

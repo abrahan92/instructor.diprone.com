@@ -1,0 +1,446 @@
+ 
+<!-- Panel de agregar referidos -->
+
+<% content_for :ribbon do %>
+<!-- RIBBON -->
+<div id="ribbon">
+
+  <span class="ribbon-button-alignment"> 
+    <span id="refresh" class="btn btn-ribbon" data-action="resetWidgets" data-title="refresh"  rel="tooltip" data-placement="bottom" data-original-title="<i class='text-warning fa fa-warning'></i> Warning! This will reset all your widget settings." data-html="true">
+      <i class="fa fa-refresh"></i>
+    </span> 
+  </span>
+
+  <!-- breadcrumb -->
+  <ol class="breadcrumb">
+    <li>Inicio</li><li>Miembros de mi red</li><li><%=@red.count%> Miembros</li>
+  </ol>
+
+</div>
+
+<% end %>
+
+
+
+<div id="content">
+
+  <div class="row">
+
+
+ <div id="chart-container"></div>
+
+
+	<!--<div class="col-lg-12">
+
+	  	 <div id="panelred" class="well well-sm">
+			 <% @red.each do |user| %>
+				
+				<% if user.id_padre == current_user.id.to_s %>
+					<%=user.email%>
+					<br><br>
+				<%end%>
+
+
+				
+			 <%end%>
+
+
+
+			 
+	  	 </div>
+
+
+
+	</div> -->
+
+  </div>
+  <br>
+
+  <div class="row">
+
+		<!-- personal-->
+			<div class="col-lg-4">
+                  <div style="background-color:#6ab344;" class="panel pricing-big">
+                    <%= image_tag 'ribbon.png', class: 'ribbon', alt: '' %>
+                      <div class="panel-heading">
+                          <h3 style="color:white;" class="panel-title">
+                              Personal</h3>
+                      </div>
+                      <div class="panel-body no-padding text-align-center">
+                          <div class="the-price">
+                              <h1>
+                                  40%<span class="subscript"> x Venta</span></h1>
+                          </div>
+                <div class="price-features" style="margin-bottom:-160px;">
+                  <ul class="list-unstyled text-left">
+                        <li><i class="fa fa-check text-success"></i> Eres el lider de la <strong style="font-size:20px;"> Red </strong></li>
+                       
+                      </ul>
+                </div>
+                      </div>
+                      <div class="panel-footer text-align-center">
+                          <a style="background-color:#6ab344; color:white;" href="javascript:void(0);" class="btn btn-block" role="button"><span style="font-size:20px;"><%=@userventaspor%>$</span></a>
+                        <div>
+                          <a href="javascript:void(0);"><i>Ganancia Neta</i></a>
+                        </div>
+                      </div>
+                  </div>
+              </div>
+
+		<!-- personal -->
+
+		<!-- Hijos -->
+			<div class="col-lg-2">
+                  <div style="background-color:#6ab344;" class="panel pricing-big">
+                  
+                      <div class="panel-heading">
+                          <h3 class="panel-title" style="color:white;">
+                              Hijos</h3>
+                      </div>
+                      <div class="panel-body no-padding text-align-center">
+                          <div class="the-price">
+                              <h1>
+                                  8%<span class="subscript"> x Venta</span></h1>
+                          </div>
+                <div class="price-features" style="margin-bottom:-160px;">
+                  <ul class="list-unstyled text-left">
+                        <li style="text-align:center;"><i class="fa fa-check text-success"></i><strong style="font-size:20px;"> <%=@contadorhijos%> </strong>hijos</li>
+                       
+                      </ul>
+                </div>
+                      </div>
+                      <div class="panel-footer text-align-center">
+                          <a style="background-color:#6ab344; color:white;" href="javascript:void(0);" class="btn btn-primary btn-block" role="button"><span style="font-size:20px;"><%=@ventashijospor%>$</span></a>
+                        <div>
+                          <a href="javascript:void(0);"><i>Ganancia Neta</i></a>
+                        </div>
+                      </div>
+                  </div>
+              </div>
+
+		<!-- Hijos -->
+
+
+		<!-- Nietos -->
+			<div class="col-lg-2">
+                  <div style="background-color:#6ab344;" class="panel pricing-big">
+                    
+                      <div class="panel-heading">
+                          <h3 class="panel-title" style="color:white;">
+                              Nietos</h3>
+                      </div>
+                      <div class="panel-body no-padding text-align-center">
+                          <div class="the-price">
+                              <h1>
+                                  6%<span class="subscript"> x Venta</span></h1>
+                          </div>
+                <div class="price-features" style="margin-bottom:-160px;">
+                  <ul class="list-unstyled text-left">
+                        <li style="text-align:center;"><i class="fa fa-check text-success"></i><strong style="font-size:20px;"> <%=@contadornietos%> </strong>nietos</li>
+                       
+                      </ul>
+                </div>
+                      </div>
+                      <div class="panel-footer text-align-center">
+                          <a style="background-color:#6ab344; color:white;" href="javascript:void(0);" class="btn btn-block" role="button"><span style="font-size:20px;"><%=@ventasnietospor%>$</span></a>
+                        <div>
+                          <a href="javascript:void(0);"><i>Ganancia Neta</i></a>
+                        </div>
+                      </div>
+                  </div>
+              </div>
+
+		<!-- Nietos -->
+
+		<!-- Bisnietos -->
+			<div class="col-lg-2">
+                  <div style="background-color:#6ab344; " class="panel pricing-big">
+                  
+                      <div class="panel-heading">
+                          <h3 class="panel-title" style="color:white;">
+                              Bisnietos</h3>
+                      </div>
+                      <div class="panel-body no-padding text-align-center">
+                          <div class="the-price">
+                              <h1>
+                                  4%<span class="subscript"> x Venta</span></h1>
+                          </div>
+                <div class="price-features" style="margin-bottom:-160px;">
+                  <ul class="list-unstyled text-left">
+                        <li style="text-align:center;"><i class="fa fa-check text-success"></i><strong style="font-size:20px;"> <%=@contadorbisnietos%> </strong>bisnietos</li>
+                       
+                      </ul>
+                </div>
+                      </div>
+                      <div class="panel-footer text-align-center">
+                          <a style="background-color:#6ab344; color:white;" href="javascript:void(0);" class="btn btn-block" role="button"><span style="font-size:20px;"><%=@ventasbisnietospor%>$</span></a>
+                        <div>
+                          <a href="javascript:void(0);"><i>Ganancia Neta</i></a>
+                        </div>
+                      </div>
+                  </div>
+              </div>
+
+		<!-- Bisnietos -->
+
+
+		<!-- Tataranietos -->
+			<div class="col-lg-2">
+                  <div style="background-color:#6ab344; " class="panel pricing-big">
+                    
+                      <div class="panel-heading">
+                          <h3 class="panel-title" style="color:white;">
+                              Tataranietos</h3>
+                      </div>
+                      <div class="panel-body no-padding text-align-center">
+                          <div class="the-price">
+                              <h1>
+                                  2%<span class="subscript"> x Venta</span></h1>
+                          </div>
+                <div class="price-features" style="margin-bottom:-160px;">
+                  <ul class="list-unstyled text-left">
+                        <li style="text-align:center;"><i class="fa fa-check text-success"></i><strong style="font-size:20px;"> <%=@contadortataranietos%> </strong>tataranietos</li>
+                       
+                      </ul>
+                </div>
+                      </div>
+                      <div class="panel-footer text-align-center">
+                          <a style="background-color:#6ab344; color:white;" href="javascript:void(0);" class="btn btn-block" role="button"><span style="font-size:20px;"><%=@ventastataranietospor%>$</span></a>
+                        <div>
+                          <a href="javascript:void(0);"><i>Ganancia Neta</i></a>
+                        </div>
+                      </div>
+                  </div>
+              </div>
+
+		<!-- Tataranietos -->
+
+
+  </div>
+  <br>
+
+  <div class="row">
+	<div class="col-lg-12">
+                      <div class="panel-body no-padding text-align-center">
+                          <div class="the-price">
+                              <h1>
+                                  <span style="margin-right:10px;">Total a ganar este més</span> <strong style="margin-right:10px;"> <%=@totalganar%>$</strong> <i class="fa fa-hand-o-left" aria-hidden="true"></i>
+</h1>
+                          </div>
+
+                      </div>
+	</div>
+  </div>
+
+
+  <div class="row" style="display:none;">
+  	
+  	<!-- tu -->
+  	<div class="col-lg-12">
+  		Tu -- <%=@userventas%>
+  	</div>
+	<!-- tu -->
+  </div>
+
+  <div class="row" style="display:none;">
+  	
+  	<!-- hijos -->
+  	<div class="col-lg-3">
+  		Hijos -- <%=@ventashijos%>
+  	</div>
+  	<!-- hijos -->
+
+  	<!-- nietos -->
+  	<div class="col-lg-3">
+  		Nietos -- <%=@ventasnietos%>
+  	</div>
+  	<!-- nietos -->
+
+  	<!-- bisnietos -->
+  	<div class="col-lg-3">
+  		Bisnietos -- <%=@ventasbisnietos%>
+  	</div>
+  	<!-- bisnietos -->
+
+  	<!-- tataranietos -->
+  	<div class="col-lg-3">
+  		Tataranietos -- <%=@ventastataranietos%>
+  	</div>
+  	<!-- tataranietos -->
+
+  </div>
+</div>
+
+<!-- red -- >
+
+
+	
+	
+
+
+<!-- red -->
+
+<style>
+	#panelred{
+		
+	}
+</style>
+
+
+<% content_for :scripts do %>
+
+ 
+    <script type="text/javascript" src="https://cdn.rawgit.com/niklasvh/html2canvas/master/dist/html2canvas.min.js"></script>
+     <%= javascript_include_tag 'jquery.orgchart' %>
+
+     <script>
+
+     /*
+
+,
+      
+      'children': [
+      	<% @red.each do |user| %>
+      	<%if user.id == @red.last.id %>
+        { 'id': '<%=user.id%>', 'name': '<%=user.nombre%>', 'title': '<%=user.email%>' }
+        <%else%>
+        { 'id': '<%=user.id%>', 'name': '<%=user.nombre%>', 'title': '<%=user.email%>' },
+        <%end%>  
+        <%end %>
+          ]
+        }
+
+*/
+
+     	'use strict';
+
+(function($){
+
+  $(function() {
+    
+    var datascource = {
+      'id': '<%=current_user.id%>',
+      'name': 'Padre',
+      'title': '<%=current_user.email%>',
+
+      'children': [
+       
+        <% @red.each do |user| %>
+
+	      	<%if user.id == @red.last.id %>
+	      		/* Hijo Ultimo */
+
+		        { 'id': '<%=user.id%>', 'name': 'Hijo', 'title': '<%=user.email%>',
+
+		        'children':[
+
+		        		<% User.where(id_padre: user.id.to_s).each do |nieto| %>
+
+		        				
+
+		        					{ 'id': '<%=nieto.id%>', 'name': 'Nieto', 'title': '<%=nieto.email%>',
+
+		        					'children':[
+
+		        						<% User.where(id_padre: nieto.id.to_s).each do |bisnieto| %>
+
+		        							{ 'id': '<%=bisnieto.id%>', 'name': 'Bisnieto', 'title': '<%=bisnieto.email%>',
+		        							'children':[
+
+		        								<% User.where(id_padre: bisnieto.id.to_s).each do |tataranieto| %>
+		        									{ 'id': '<%=bisnieto.id%>', 'name': 'Tataranieto', 'title': '<%=bisnieto.email%>'},
+		        								<%end%>
+
+		        							]
+		        							},
+
+		        						<%end%>
+
+
+		        					]
+
+
+		        					},
+
+
+
+		        		<%end%>
+		        ]
+		    	}
+
+	        <%else%>
+
+	        	/* Otros hijos */
+
+		        { 'id': '<%=user.id%>', 'name': 'Hijo', 'title': '<%=user.email%>',
+
+		        'children': [
+
+		        	<% User.where(id_padre: user.id.to_s).each do |nieto| %>
+
+		        		
+
+		        			{ 'id': '<%=nieto.id%>', 'name': 'Nieto', 'title': '<%=nieto.email%>',
+
+		        			'children': [
+
+		        				<% User.where(id_padre: nieto.id.to_s).each do |bisnieto| %>
+
+		        					{ 'id': '<%=bisnieto.id%>', 'name': 'Bisnieto', 'title': '<%=bisnieto.email%>',
+		        					'children': [
+
+		        							<% User.where(id_padre: bisnieto.id.to_s).each do |tataranieto| %>
+
+		        								{ 'id': '<%=tataranieto.id%>', 'name': 'Tataranieto', 'title': '<%=tataranieto.email%>'},
+
+		        							<%end%>
+
+		        					]
+
+		        					},
+
+		        				<%end%>
+
+		        			]
+
+		        			},
+
+		        	<%end%>
+
+		        ]
+
+		    	},
+
+		        /* Otros hijos */
+
+	        <%end%>  
+
+        <%end %>
+
+      ]
+    };
+
+    $('#chart-container').orgchart({
+      'data' : datascource,
+      'depth': 2,
+      'nodeContent': 'title',
+      'nodeID': 'id',
+      'createNode': function($node, data) {
+        var secondMenuIcon = $('<i>', {
+          'class': 'fa fa-info-circle second-menu-icon',
+          click: function() {
+            $(this).siblings('.second-menu').toggle();
+          }
+        });
+        var secondMenu = '<div class="second-menu"><img class="avatar" src="../img/avatar/' + data.id + '.jpg"></div>';
+        $node.append(secondMenuIcon).append(secondMenu);
+      }
+    });
+
+  });
+
+})(jQuery);
+     </script>
+     
+<%end%>
+

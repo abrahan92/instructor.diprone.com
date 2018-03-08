@@ -1,0 +1,106 @@
+<% User.where(id_padre: user.id.to_s).each do |nieto| %>
+
+		        		<%if nieto.id ==  User.where(id_padre: user.id.to_s).last.id %>
+
+		        			{ 'id': '<%=nieto.id%>', 'name': 'Nieto', 'title': '<%=nieto.email%>',
+		        			'children': [
+
+		        				<% User.where(id_padre: nieto.id.to_s).each do |bisnieto| %>
+
+		        					<%if bisnieto.id ==  User.where(id_padre: nieto.id.to_s).last.id%>
+		        						{ 'id': '<%=bisnieto.id%>', 'name': 'Bisnieto Ultimo', 'title': '<%=bisnieto.email%>',
+		        						'children':[
+
+		        							<% User.where(id_padre: bisnieto.id.to_s).each do |tataranieto| %>
+		        								<%if tataranieto.id ==  User.where(id_padre: bisnieto.id.to_s).last.id%>
+		        									{ 'id': '<%=tataranieto.id%>', 'name': 'Tataranieto', 'title': '<%=tataranieto.email%>'}
+		        								<%else%>
+		        									{ 'id': '<%=tataranieto.id%>', 'name': 'Tataranieto', 'title': '<%=tataranieto.email%>'},
+		        								<%end%>
+		        							<%end%>
+
+		        						]
+
+		        						}
+		        					  <%else%>
+		        						{ 'id': '<%=bisnieto.id%>', 'name': 'Bisnieto', 'title': '<%=bisnieto.email%>',
+		        						'children':[
+
+		        							<% User.where(id_padre: bisnieto.id.to_s).each do |tataranieto| %>
+
+		        								<%if tataranieto.id ==  User.where(id_padre: bisnieto.id.to_s).last.id%>
+
+		        									{ 'id': '<%=tataranieto.id%>', 'name': 'Tataranieto', 'title': '<%=tataranieto.email%>'}
+
+		        								<%else%>
+		        									{ 'id': '<%=tataranieto.id%>', 'name': 'Tataranieto', 'title': '<%=tataranieto.email%>'},
+		        								<%end%>
+
+		        							<%end%>
+
+		        						]
+		        						},
+
+		        					<%end%>
+
+		        				<%end%>
+
+		        			]
+		        			}
+
+		        		<%else%>
+
+		        			{ 'id': '<%=nieto.id%>', 'name': 'Nieto', 'title': '<%=nieto.email%>',
+
+		        			'children':[
+
+		        				<% User.where(id_padre: nieto.id.to_s).each do |bisnieto| %>
+
+		        					<%if bisnieto.id ==  User.where(id_padre: nieto.id.to_s).last.id %>
+
+		        					{ 'id': '<%=bisnieto.id%>', 'name': 'Bisnieto', 'title': '<%=bisnieto.email%>',
+		        					'children':[
+
+		        						<% User.where(id_padre: bisnieto.id.to_s).each do |tataranieto| %>
+
+		        							<%if tataranieto.id ==  User.where(id_padre: bisnieto.id.to_s).last.id%>
+		        									{ 'id': '<%=tataranieto.id%>', 'name': 'Tataranieto', 'title': '<%=tataranieto.email%>'}
+		        							<%else%>
+		        									{ 'id': '<%=tataranieto.id%>', 'name': 'Tataranieto', 'title': '<%=tataranieto.email%>'},
+		        							<%end%>
+
+		        						<%end%>
+
+		        					]
+
+		        					}
+
+		        					<%else%>
+		        					{ 'id': '<%=bisnieto.id%>', 'name': 'Bisnieto', 'title': '<%=bisnieto.email%>',
+		        					'children':[
+
+		        						<% User.where(id_padre: bisnieto.id.to_s).each do |tataranieto| %>
+
+		        							<%if tataranieto.id ==  User.where(id_padre: bisnieto.id.to_s).last.id%>
+		        									{ 'id': '<%=tataranieto.id%>', 'name': 'Tataranieto', 'title': '<%=tataranieto.email%>'}
+		        							<%else%>
+		        									{ 'id': '<%=tataranieto.id%>', 'name': 'Tataranieto', 'title': '<%=tataranieto.email%>'},
+		        							<%end%>
+
+		        						<%end%>
+
+		        					]
+
+
+		        					},
+		        					<%end%>
+
+		        				<%end%>
+
+
+		        			]
+		        			},
+
+		        		<%end%>
+		        		
+		        	<%end%>

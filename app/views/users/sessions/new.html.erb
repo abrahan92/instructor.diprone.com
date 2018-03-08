@@ -1,0 +1,141 @@
+<% content_for :html_id, "extr-page" %>
+<% content_for :body_class, "animated fadeInDown" %>
+<% content_for :top_right do %>
+
+<% end %>
+<!-- MAIN CONTENT -->
+<div id="content" class="container">
+
+  <div class="row">
+    <div class="col-xs-12 col-sm-12 col-md-7 col-lg-8 hidden-xs hidden-sm">
+      <h1 class="login-header-big" style="color:#6ab344;">Panel de Instructores</h1>
+      <div class="hero">
+
+        <div class="pull-left login-desc-box-l">
+          <h4 class="paragraph-header">Bienvenido a nuestra herramienta de gestion de cursos. Miles de estudiantes esperan por ti.!</h4>
+          <div class="login-app-icons">
+            <a href="https://diprone.com" target="_blank" class="btn btn-success btn-sm">Ir a nuestro Sitio Web</a>
+            
+          </div>
+        </div>
+
+        <%= image_tag 'demo/iphoneview.png', class: 'pull-right display-image', alt: '', style: 'width:210px' %>
+
+      </div>
+
+      <div class="row">
+        <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+          <h5 class="about-heading">Estas listo para empezar tu nuevo rumbo?</h5>
+          <p>
+            Diprone desarrolló esta plataforma para facilitar a cada uno de nuestros instructores la gestión de sus cursos y llevar un seguimiento del mismo. Podrás interactuar con otros instructores, obtener ayuda de instructores veteranos, configurar paso a paso tu curso con las métricas solicitadas por nuestra universidad socia en la ciudad de Chicago | USA.
+          </p>
+        </div>
+        <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+          <h5 class="about-heading">En Diprone más que un equipo somos una familia</h5>
+          <p>
+            Únete a la familia de instructores Diprone y forma parte de la red de más de 250.000 instructores en el mundo y descubre los beneficios que darán un giro 360° a tu vida.
+          </p>
+        </div>
+      </div>
+
+    </div>
+    <div class="col-xs-12 col-sm-12 col-md-5 col-lg-4">
+      <div class="well no-padding">
+        <%= form_for(resource, as: resource_name, url: session_path(resource_name), html: {id: 'login-form', class: 'smart-form client-form'}) do |f| %>
+          <header>
+            Iniciar Sesión
+          </header>
+
+          <fieldset>
+
+            <section>
+              <label class="label">E-mail</label>
+              <label class="input"> <i class="icon-append fa fa-user"></i>
+                <%= f.email_field :email, autofocus: true %>
+                <b class="tooltip tooltip-top-right"><i class="fa fa-user txt-color-teal"></i> Por favor ingresa tu dirección email</b>
+              </label>
+            </section>
+
+            <section>
+              <label class="label">Contraseña</label>
+              <label class="input"> <i class="icon-append fa fa-lock"></i>
+                <%= f.password_field :password, autocomplete: "off" %>
+                <b class="tooltip tooltip-top-right"><i class="fa fa-lock txt-color-teal"></i> Por favor ingresa tu contraseña</b>
+              </label>
+              <!--
+              <div class="note">
+                <%= link_to 'Olvidaste tu contraseña?', miscellaneous_forgot_password_path %>
+              </div>-->
+            </section>
+
+            <section>
+              <label class="checkbox">
+                <%= f.check_box :remember_me %>
+                <i></i>Recordarme</label>
+            </section>
+          </fieldset>
+          <footer>
+            <button type="submit" class="btn btn-primary">
+             Iniciar Sesión
+            </button>
+          </footer>
+        <% end %>
+
+      </div>
+
+      <h5 class="text-center"> - Ó inicia sesión con -</h5>
+
+      <ul class="list-inline text-center">
+        <li>
+          <a href="javascript:void(0);" class="btn btn-primary btn-circle"><i class="fa fa-facebook"></i></a>
+        </li>
+        <li>
+          <a href="javascript:void(0);" class="btn btn-info btn-circle"><i class="fa fa-twitter"></i></a>
+        </li>
+        
+      </ul>
+
+    </div>
+  </div>
+</div>
+
+
+<% content_for :scripts do %>
+  <script type="text/javascript">
+    runAllForms();
+
+    $(function() {
+      // Validation
+      $("#login-form").validate({
+        // Rules for form validation
+        rules : {
+          email : {
+            required : true,
+            email : true
+          },
+          password : {
+            required : true,
+            minlength : 3,
+            maxlength : 20
+          }
+        },
+
+        // Messages for form validation
+        messages : {
+          email : {
+            required : 'Please enter your email address',
+            email : 'Please enter a VALID email address'
+          },
+          password : {
+            required : 'Please enter your password'
+          }
+        },
+
+        // Do not change code below
+        errorPlacement : function(error, element) {
+          error.insertAfter(element.parent());
+        }
+      });
+    });
+  </script>
+<% end %>

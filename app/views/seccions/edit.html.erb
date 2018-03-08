@@ -1,0 +1,108 @@
+
+ <% content_for :ribbon do %>
+
+<div id="ribbon">
+
+  <span class="ribbon-button-alignment"> 
+    <span id="refresh" class="btn btn-ribbon" data-action="resetWidgets" data-title="refresh"  rel="tooltip" data-placement="bottom" data-original-title="<i class='text-warning fa fa-warning'></i> Warning! This will reset all your widget settings." data-html="true">
+      <i class="fa fa-refresh"></i>
+    </span> 
+  </span>
+
+
+  <ol class="breadcrumb">
+    <li>Inicio</li><li>Secciones</li><li><%= @seccion.titulo %></li>
+  </ol>
+
+
+
+
+</div>
+
+<% end %>
+
+
+
+<div id="content">
+
+  <div class="row">
+  
+    <div class="col-lg-12">
+
+			<div id="secciones" class="well well-sm" style="padding-right:30px;">
+
+				<form class="smart-form edit_seccion" id="edit_seccion_<%=@seccion.id%>"  action="/users/<%=current_user.id%>/cursos/<%=@curso.id%>/seccions/<%=@seccion.id%>" accept-charset="UTF-8" method="post">
+
+
+
+                              <div class="col-lg-12">
+                                <div class="form-group">
+                                  <div class="input-group">
+
+                                    <span class="input-group-addon"><i class="fa fa-text-width fa-lg fa-fw"></i></span>
+
+
+                                   <input style="padding-left:20px;" name="seccion[titulo]" id="seccion_titulo" type="text" class="form-control" placeholder="Titulo" value="<%= @seccion.titulo %>">
+
+                                  </div>
+                                </div>
+                              </div>
+
+
+                              <div class="col-lg-12" style="margin-top:15px;">
+                                <div class="form-group">
+                                  <div class="input-group">
+
+                                    <span class="input-group-addon"><i class="fa fa-list fa-lg fa-fw"></i></span>
+
+
+                                  
+
+                                   <textarea style="padding-top:20px; padding-left:20px;" placeholder="Descripción" name="seccion[descripcion]" id="seccion_descripcion" type="text" rows="5" class="form-control"><%=@seccion.descripcion%></textarea>
+
+                                  </div>
+                                </div>
+                              </div>
+
+
+
+
+
+                              <input name="seccion[curso_id]" id="seccion_curso_id" type="text" placeholder="id curso">
+
+
+
+
+				
+<input type="hidden" name="_method" value="patch" />
+
+				
+
+				
+
+				 <button style="height:45px; margin-top:15px;" type="submit" class="btn btn-success btn-lg" >
+                         <span style="font-size:20px;">Actualizar Datos</span>
+                        </button>
+
+				</form>
+
+			</div>
+	  </div>
+   </div>
+</div>
+
+<style>
+	#seccion_curso_id{
+		display: none;
+	}
+</style>
+
+
+<% content_for :scripts do %>
+  <script type="text/javascript">
+
+	$("#seccion_curso_id").val(<%=@curso.id%>);
+</script>
+<%end%>
+
+

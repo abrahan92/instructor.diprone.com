@@ -1,0 +1,501 @@
+
+
+
+<%= form_for(@user) do |f| %>
+    <article class="col-sm-12 col-md-12 col-lg-12">
+
+            <!-- Widget ID (each widget will need unique ID)-->
+            <div class="jarviswidget jarviswidget-color-darken" id="wid-id-0" data-widget-editbutton="false" data-widget-deletebutton="false">
+              <!-- widget options:
+              usage: <div class="jarviswidget" id="wid-id-0" data-widget-editbutton="false">
+
+              data-widget-colorbutton="false"
+              data-widget-editbutton="false"
+              data-widget-togglebutton="false"
+              data-widget-deletebutton="false"
+              data-widget-fullscreenbutton="false"
+              data-widget-custombutton="false"
+              data-widget-collapsed="true"
+              data-widget-sortable="false"
+
+              -->
+              <header>
+                <span class="widget-icon"> <i class="fa fa-check"></i> </span>
+                <h2>Información del Instructor</h2>
+                
+      
+              </header>
+
+              <!-- widget div-->
+              <div>
+
+                <!-- widget edit box -->
+                <div class="jarviswidget-editbox">
+                  <!-- This area used as dropdown edit box -->
+
+                </div>
+                <!-- end widget edit box -->
+
+                <!-- widget content -->
+                <div class="widget-body">
+
+                  <div class="row">
+                    <form id="wizard-1" novalidate="novalidate">
+                      <div id="bootstrap-wizard-1" class="col-sm-12">
+                        <div class="form-bootstrapWizard">
+                          <ul class="bootstrapWizard form-wizard">
+                            <li class="active" data-target="#step1">
+                              <a href="#tab1" data-toggle="tab"> <span class="step">1</span> <span class="title">Contraseñas</span> </a>
+                            </li>
+                            <li data-target="#step2">
+                              <a href="#tab2" data-toggle="tab"> <span class="step">2</span> <span class="title">Datos Personales</span> </a>
+                            </li>
+                            <li data-target="#step3">
+                              <a href="#tab3" data-toggle="tab"> <span class="step">3</span> <span class="title">Dirección</span> </a>
+                            </li>
+                            <li data-target="#step4">
+                              <a href="#tab4" data-toggle="tab"> <span class="step">4</span> <span class="title">Biografía y Guardar</span> </a>
+                            </li>
+                          </ul>
+                          <div class="clearfix"></div>
+                        </div>
+                        <div class="tab-content">
+
+                        <!-- Primer panel datos contraseña -->
+
+                          <div class="tab-pane active" id="tab1">
+                            <br>
+                            <h3><strong>Paso 1 </strong> - Información de Seguridad</h3>
+
+
+                            
+                            <!-- contrasenas nuevas -->
+                            <div class="row">
+
+
+                           <div class="alert alert-success fade in">
+                              <button class="close" data-dismiss="alert">
+                                ×
+                              </button>
+                              <i class="fa-fw fa fa-info"></i>
+                              Debe ingresar su contraseña actual para poder guardar los cambios
+                              
+                            </div>
+
+                              <div class="col-sm-12">
+                                <div class="form-group">
+                                  <div class="input-group">
+                                    <span class="input-group-addon"><i class="fa fa-key fa-lg fa-fw"></i></span>
+
+
+                                    <%= f.password_field :current_password, autocomplete: "off", :placeholder => "Contraseña Actual", class: "form-control input-lg", :required => true %>
+
+                                  </div>
+                                </div>
+                              </div>
+                              
+                            </div>
+                            <!-- contrasenas nuevas -->
+
+                            <!-- contrasenas nuevas -->
+                            <div class="row">
+
+
+                           <div class="alert alert-success fade in">
+                              <button class="close" data-dismiss="alert">
+                                ×
+                              </button>
+                              <i class="fa-fw fa fa-info"></i>
+                             Si deseas cambiar tu contraseña has click en el botón
+                            </div>
+                              <div class="col-sm-12">
+                                <div class="form-group">
+                                  <div class="input-group">
+
+                                    <span class="input-group-addon"><i class="fa fa-lock fa-lg fa-fw"></i></span>
+
+
+                                    <a href="/users/<%=current_user.id%>/password" class="form-control input-lg btn btn-lg btn-success">Cambiar Contraseña</a>
+                                  </div>
+                                </div>
+                              </div>
+                              
+                            </div>
+                            <!-- contrasenas nuevas -->
+
+                          </div>
+
+                          <!-- Primer panel datos contraseña -->
+
+
+
+                          <!-- Segundo panel datos nombres -->
+
+                          <div class="tab-pane" id="tab2">
+                            <br>
+                            <h3><strong>Paso 2</strong> - Información Personal</h3>
+
+                            <!-- Nombre y Apellido -->
+
+                            <div class="row">
+
+
+                              <div class="col-sm-6">
+                                <div class="form-group">
+                                  <div class="input-group">
+                                    <span class="input-group-addon"><i class="fa fa-user fa-lg fa-fw"></i></span>
+
+
+                                    <%= f.text_field :nombre, autocomplete: "off", :placeholder => "Nombre", class: "form-control input-lg" %>
+
+                                  </div>
+                                </div>
+                              </div>
+                              <div class="col-sm-6">
+                                <div class="form-group">
+                                  <div class="input-group">
+                                    <span class="input-group-addon"><i class="fa fa-user fa-lg fa-fw"></i></span>
+  
+                                    <%= f.text_field :apellido, autocomplete: "off", :placeholder => "Apellido", class: "form-control input-lg" %>
+
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+
+
+                            <!-- Nombre y Apellido -->
+
+                            <!-- Telefono y Profesion -->
+
+                            <div class="row">
+
+
+                              <div class="col-sm-6">
+                                <div class="form-group">
+                                  <div class="input-group">
+                                    <span class="input-group-addon"><i class="fa fa-phone fa-lg fa-fw"></i></span>
+
+
+                                    <%= f.text_field :telefono, autocomplete: "off", class: "form-control input-lg phonetext", placeholder: "Telefono" %>
+
+                                  </div>
+                                </div>
+                              </div>
+                              <div class="col-sm-6">
+                                <div class="form-group">
+                                  <div class="input-group">
+                                    <span class="input-group-addon"><i class="fa fa-graduation-cap fa-lg fa-fw"></i></span>
+  
+                                    <%= f.text_field :profesion, autocomplete: "off", :placeholder => "Profesion", class: "form-control input-lg" %>
+
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+
+                            <!-- Telefono y Profesion-->
+
+
+                            <!-- Email -->
+
+                            <div class="row">
+
+
+                              <div class="col-sm-12">
+                                <div class="form-group">
+                                  <div class="input-group">
+                                    <span class="input-group-addon"><i class="fa fa-envelope fa-lg fa-fw"></i></span>
+
+
+                                    <%= f.email_field :email, autocomplete: "off", class: "form-control input-lg" %>
+
+                                  </div>
+                                </div>
+                              </div>
+
+                            </div>
+
+                            <!-- Email -->
+
+                            <!-- Ventas -->
+
+                            <%if current_user.rol_id == 1%>
+
+                              <div class="row">
+
+                                
+                                <div class="col-sm-12">
+                                Ventas del Mes
+                                  <div class="form-group">
+                                    <div class="input-group">
+
+                                      <span class="input-group-addon"><i class="fa fa-money fa-lg fa-fw"></i></span>
+
+
+                                      <%= f.number_field :ventas, autocomplete: "off", class: "form-control input-lg" %>
+
+                                    </div>
+                                  </div>
+                                </div>
+
+                              </div>
+
+                            <%end%>
+
+                            <!-- Ventas -->
+
+                            <!-- status -->
+
+                            <%if current_user.rol_id == 1%>
+
+                              <div class="row">
+
+                                
+                                <div class="col-sm-12">
+                                Status
+                                  <div class="form-group">
+                                    <div class="input-group">
+
+                                      <span class="input-group-addon"><i class="fa fa-tachometer fa-lg fa-fw"></i></span>
+
+
+                                      <%= f.text_field :status, autocomplete: "off", class: "form-control input-lg", :disabled=>true %>
+
+                                    </div>
+                                  </div>
+                                </div>
+
+                              </div>
+
+                            <%end%>
+
+                            <!-- status -->
+
+                            <!-- Imagen de Perfil -->
+
+
+
+
+
+                            <div class="row">
+
+
+                              <div class="col-sm-12">
+                                <div class="form-group">
+                                  <div class="input-group">
+                                      <div class="input input-file">
+                                        <span class="button"><%= f.file_field :foto, autocomplete: "off", class: "form-control input-lg foto" %></span>
+
+
+                                      </div>
+
+                                  </div>
+                                </div>
+                              </div>
+
+                            </div>
+
+
+                            <!-- Imagen de Perfil -->
+                            
+                          </div>
+
+                           <!-- Segundo panel datos nombres -->
+
+                          <!-- Tercer Panel Direccion -->
+
+                          <div class="tab-pane" id="tab3">
+                            <br>
+                            <h3><strong>Paso 3</strong> - Información de Domicilio</h3>
+
+                          <!-- Pais -->
+
+                              <div class="row">
+
+
+                              <div class="col-sm-12">
+                            <div class="form-group">
+                              <div class="input-group">
+                                <span class="input-group-addon"><i class="fa fa-globe fa-lg fa-fw"></i></span>
+
+                                      
+                                     
+                                <%= collection_select(:pais, :name, Pai.all, :id, :name, {:prompt=>true}, {:class=>'form-control input-lg'}) %>
+                                  </div>
+                                </div>
+                              </div>
+                              
+                            </div>
+
+                          <!-- Pais -->
+
+
+                          <!-- Ciudad y Codigo -->
+
+                              <div class="row">
+
+
+                              <div class="col-sm-6">
+                            <div class="form-group">
+                              <div class="input-group">
+                                <span class="input-group-addon"><i class="fa fa-flag fa-lg fa-fw"></i></span>
+
+
+                                    <%= f.text_field :ciudad, autocomplete: "off", class: "form-control input-lg", placeholder: "Ciudad" %>
+                                      
+                                     
+
+                                  </div>
+                                </div>
+                              </div>
+
+
+                              <div class="col-sm-6">
+                            <div class="form-group">
+                              <div class="input-group">
+                                <span class="input-group-addon"><i class="fa fa-envelope fa-lg fa-fw"></i></span>
+
+
+                                    <%= f.text_field :codigop, autocomplete: "off", class: "form-control input-lg", placeholder: "Codigo Postal" %>
+                                      
+                                     
+
+                                  </div>
+                                </div>
+                              </div>
+                              
+                            </div>
+
+
+                            <!-- Direccion -->
+
+                            <div class="row">
+
+
+                              <div class="col-sm-12">
+                            <div class="form-group">
+                              <div class="input-group">
+                                <span class="input-group-addon"><i class="fa fa-map-marker fa-lg fa-fw"></i></span>
+
+
+                                    <%= f.text_area :direccion, autocomplete: "off", class: "form-control input-lg direccion", placeholder: "Direccion" %>
+                                      
+                                     
+
+                                  </div>
+                                </div>
+                              </div>
+
+
+                              
+                              
+                            </div>
+
+
+                            <!-- Direccion -->
+
+                          <!-- Ciudad y Codigo -->
+
+                          </div>
+
+                          <!-- Tercer Panel Direccion -->
+
+
+
+
+
+
+                          <div class="tab-pane" id="tab4">
+                            <br>
+                            <h3><strong>Paso 4</strong> - Biografía</h3>
+                            
+
+                            <!-- Biografia -->
+
+                           
+
+                            <div class="row">
+
+
+                              <div class="col-sm-12">
+                            <div class="form-group">
+                              <div class="input-group">
+                                <span class="input-group-addon"><i class="fa fa-file-text-o fa-lg fa-fw"></i></span>
+
+
+                                    <%= f.text_area :biografia, autocomplete: "off", class: "form-control input-lg biografia", placeholder: "Biografia",rows: "5" %>
+                                      
+                                     
+
+                                  </div>
+                                </div>
+                              </div>
+
+
+                              
+                              
+                            </div>
+
+
+                           
+
+                            <!-- Biografia -->
+                              
+                            <!-- Finalizar -->
+                            <h1 class="text-center text-success"><strong><i class="fa fa-check fa-lg"></i> Completado</strong></h1>
+                            <br>
+                        <button style="height:45px;" type="submit" class="btn btn-success btn-md col-lg-12" data-toggle="#phoneInfo">
+                         <span style="font-size:20px;">Guardar Datos</span>
+                        </button>
+                            <br>
+                            <br> 
+                            <!-- Finalizar -->
+
+                          </div>
+
+                          <div class="form-actions">
+                            <div class="row">
+                              <div class="col-sm-12">
+                                <ul class="pager wizard no-margin">
+                                  <!--<li class="previous first disabled">
+                                  <a href="javascript:void(0);" class="btn btn-lg btn-default"> First </a>
+                                  </li>-->
+                                  <li class="previous disabled">
+                                    <a href="javascript:void(0);" class="btn btn-lg btn-default"> Anterior </a>
+                                  </li>
+                                  <!--<li class="next last">
+                                  <a href="javascript:void(0);" class="btn btn-lg btn-primary"> Last </a>
+                                  </li>-->
+                                  <li class="next">
+                                    <a href="javascript:void(0);" class="btn btn-lg txt-color-darken"> Siguiente </a>
+                                  </li>
+                                </ul>
+                              </div>
+                            </div>
+                          </div>
+
+                        </div>
+                      </div>
+                    </form>
+                  </div>
+
+                </div>
+                <!-- end widget content -->
+
+              </div>
+              <!-- end widget div -->
+
+            </div>
+            <!-- end widget -->
+
+          </article>
+<%end%>
+
+<style> 
+  .foto{
+    height:50px;
+    padding-bottom: 60px;
+    width:200px;
+  }
+</style>

@@ -1,0 +1,2 @@
+INSERT INTO categoria (nombre,created_at,updated_at)
+VALUES ('Seleccione una Categoria',now(),now()), ('Desarrollo',now(),now()), ('Negocios',now(),now()), ('Informática y Software',now(),now()), ('Productividad en la oficina',now(),now()), ('Desarrollo Personal',now(),now()), ('Diseño',now(),now()), ('Marketing',now(),now()), ('Estilo de Vida',now(),now()), ('Fotografía',now(),now()), ('Salud y Fitness',now(),now()), ('Formación de Profesorado',now(),now()), ('Música',now(),now()), ('Estudios académicos',now(),now()), ('Idioma',now(),now());

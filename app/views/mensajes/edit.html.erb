@@ -1,0 +1,46 @@
+<% content_for :ribbon do %>
+<!-- RIBBON -->
+<div id="ribbon">
+
+  <span class="ribbon-button-alignment">
+    <span id="refresh" class="btn btn-ribbon" data-action="resetWidgets" data-title="refresh"  rel="tooltip" data-placement="bottom" data-original-title="<i class='text-warning fa fa-warning'></i> Warning! This will reset all your widget settings." data-html="true">
+      <i class="fa fa-refresh"></i>
+    </span>
+  </span>
+
+  <!-- breadcrumb -->
+  <ol class="breadcrumb">
+    <li>Inicio</li><li>Mensajes</li><li><%=@mensaje.sujeto%></li>
+  </ol>
+
+</div>
+<!-- END RIBBON -->
+<% end %>
+<div id="content">
+<div class="row">
+    <div class="col-sm-12">
+
+      <div class="well">
+        
+        <h1 class="semi-bold"><i style="color:#6ab344; margin-right:10px;" class="fa fa-envelope-o" aria-hidden="true"></i> <%=@mensaje.sujeto%></h1>
+      <p>
+        <%=@mensaje.mensaje%>
+      </p>
+  
+  <%if @mensaje.status == '0'%>
+
+    <%= form_for [@user, @mensaje], :html => {:class => "smart-form"} do |f| %>
+		<%= f.check_box :status, :style => "margin-right:10px;"%>
+		                        <button style="height:25px; padding-top:-10px;" type="submit" class="btn btn-success btn-sm" data-toggle="#phoneInfo">
+                         <span style="font-size:10px;">Marcar como leído</span>
+                        </button>
+      <%end%>
+<%end%>
+
+      </div>
+
+
+    </div>
+  </div>
+</div>
+

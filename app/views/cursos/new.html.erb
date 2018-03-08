@@ -1,0 +1,483 @@
+ <% content_for :ribbon do %>
+<!-- RIBBON -->
+<div id="ribbon">
+
+  <span class="ribbon-button-alignment"> 
+    <span id="refresh" class="btn btn-ribbon" data-action="resetWidgets" data-title="refresh"  rel="tooltip" data-placement="bottom" data-original-title="<i class='text-warning fa fa-warning'></i> Warning! This will reset all your widget settings." data-html="true">
+      <i class="fa fa-refresh"></i>
+    </span> 
+  </span>
+
+  <!-- breadcrumb -->
+  <ol class="breadcrumb">
+    <li>Inicio</li><li>Cursos</li><li># <%= current_user.cursos.count + 1 %></li>
+  </ol>
+  <!-- end breadcrumb -->
+
+  <!-- You can also add more buttons to the
+  ribbon for further usability
+
+  Example below:
+
+  <span class="ribbon-button-alignment pull-right">
+  <span id="search" class="btn btn-ribbon hidden-xs" data-title="search"><i class="fa-grid"></i> Change Grid</span>
+  <span id="add" class="btn btn-ribbon hidden-xs" data-title="add"><i class="fa-plus"></i> Add</span>
+  <span id="search" class="btn btn-ribbon" data-title="search"><i class="fa-search"></i> <span class="hidden-mobile">Search</span></span>
+  </span> -->
+
+</div>
+<!-- END RIBBON -->
+<% end %>
+
+
+<div class="col-lg-12" style="padding:20px; margin-top:-30px;">
+  
+
+<!-- Informacion basica del curso -->
+                            <%= form_for [@user, Curso.new], :html => {:class => "smart-form"} do |f| %>
+                                    
+                                      
+                              <div class="col-lg-12" >
+
+                                  <!-- titulo -->
+
+                                    <div class="col-lg-12" style="margin-top:30px;">
+                                      
+                                      <label class="input"> <i class="icon-prepend" style="padding-right:20px;">Titulo</i>
+                                           
+                                            <%= f.text_field :titulo, :style => "padding-left:55px;" %>
+                                      </label>
+
+                                    </div>
+
+                                  <!-- titulo -->
+
+
+
+                                  <!-- Subtitulo -->
+
+                                    <div class="col-lg-12" style="margin-top:30px;">
+                                      
+                                      <label class="input"> <i class="icon-prepend" style="padding-right:42px;">Subtitulo</i>
+                                            <%= f.text_field :subtitulo, :style => "padding-left:75px;" %>
+                                      </label>
+
+                                    </div>
+
+                                  <!-- Subtitulo -->
+
+
+                                  <div class="col-lg-12">
+                                    
+                                        <div class="alert alert-info fade in" style="margin-top:30px;">
+                                            <button class="close" data-dismiss="alert">
+                                              ×
+                                            </button>
+                                            <i class="fa-fw fa fa-info"></i>
+                                            A continuación podrá cambiar el curso de idioma, categoria y subcategoria
+                                          </div>
+
+                                  </div>
+
+                                  <!-- Idioma, Categoria y Subcategoria DesBloqueados -->
+
+                                    <div class="col-lg-12" style="margin-top:-10px;">
+                                      
+                                        <div class="col-lg-4">
+                                          
+                                          <div class="input-group">
+                                            <span class="input-group-addon"><i class="fa fa-globe fa-lg fa-fw"></i></span>
+
+                                                  
+                                                 
+                                            <%= collection_select(:idiomas, :nombre, Idioma.all, :id, :nombre, {:prompt=>false}, {:class=>'form-control input-lg idiomaselect'}) %>
+
+                                             <%= f.text_field :idioma, class: "idiomatxt" %>
+                                           
+                                          </div>
+
+                                        </div>
+
+                                       
+                                          
+                                        <div class="col-lg-4">
+                                          
+                                          <div class="input-group">
+                                            <span class="input-group-addon"><i class="fa fa-globe fa-lg fa-fw"></i></span>
+
+                                                  
+                                                 
+                                            <%= collection_select(:categoria, :nombre, Categorium.all, :id, :nombre, {:prompt=>false}, {:class=>'form-control input-lg categoriaselect'}) %>
+                                            <%= f.text_field :categoria, class: "categoriatxt" %>
+                                          </div>
+
+                                        </div>
+
+                                       
+
+                                        
+                                          
+                                        <div class="col-lg-4">
+                                          
+                                          <div class="input-group">
+                                            <span class="input-group-addon"><i class="fa fa-globe fa-lg fa-fw"></i></span>
+
+                                                  
+                                                 
+                                            <%= collection_select(:subcategoria, :nombre, Subcategorium.all, :id, :nombre, {:prompt=>false}, {:class=>'form-control input-lg subc'}) %>
+                                            <%= f.text_field :subcategoria, class: "subctxt" %>
+                                          </div>
+
+                                        </div>
+
+                                        
+
+
+                                    </div>
+
+
+
+                                  <!-- Idioma, Categoria y Subcategoria DesBloqueados -->
+
+                                  <div class="col-lg-12">
+                                    
+                                        <div class="alert alert-warning fade in" style="margin-top:30px;">
+                                            <button class="close" data-dismiss="alert">
+                                              ×
+                                            </button>
+                                            <i class="fa-fw fa fa-info"></i><strong>Nivel de Instruccion</strong><br><br>
+Especifica el nivel del contenido del curso para que los estudiantes puedan decidir si se trata del curso apropiado para ellos.
+                                          </div>
+
+                                  </div>
+
+                                  <!-- Nivel del Curso -->
+
+                                    <div class="col-lg-12" >
+                                      
+                                      
+                                    <%= f.radio_button :nivel, 'Básico', :checked => true %> 
+                                    <%= label :contactmethod_email, 'Básico', class: "rd" %>
+                                    <%= f.radio_button :nivel, 'Intermedio' %>
+                                    <%= label :contactmethod_sms, 'Intermedio', class: "rd" %>
+                                    <%= f.radio_button :nivel, 'Avanzado', :checked => true %> 
+                                    <%= label :contactmethod_email, 'Avanzado', class: "rd" %>
+                                    <%= f.radio_button :nivel, 'Todos los Niveles' %>
+                                    <%= label :contactmethod_sms, 'Todos los Niveles', class: "rd" %>
+
+
+                                    </div>
+
+                                  <!-- Nivel del Curso -->
+
+                                  <div class="col-lg-12">
+                                    
+                                        <div class="alert alert-info fade in" style="margin-top:30px;">
+                                            <button class="close" data-dismiss="alert">
+                                              ×
+                                            </button>
+                                            <i class="fa-fw fa fa-info"></i>
+                                                Una buena imagen del curso es fundamental para que el curso sea un éxito. Debe atraer la atención del espectador y ayudarle a entender qué ofrece el curso.
+                                                <br><br>
+
+                                                  Se revisarán todas las imágenes para asegurarse de que cumplan los requisitos para su publicación. Por favor, consulta las directrices antes de crear tu imagen. <br><br>
+
+                                                  Si deseas recibir ayuda, contamos con un grupo de diseñadores profesionales que pueden crear una imagen personalizada para ti. <br><br>
+
+                                                  Tamaño requerido: 2048 x 1152 píxeles. Formato requerido: .jpg, .jpeg, .gif, .bmp o .png.
+                                          </div>
+
+                                  </div>
+
+                                  <!-- Portada del curso -->
+
+                                    <div class="col-lg-12" >
+                                      
+                                      
+
+
+                                        <div class="input input-file">
+                                          <span class="button"><%= f.file_field :portada %>Browse</span><input type="text" placeholder="Incluye tu imagen de portada para el curso" readonly="">
+
+                                        </div>
+
+
+
+
+
+
+                                    </div>
+
+                                  <!-- Portada del Curso -->
+
+                                  <div class="col-lg-12">
+                                    
+                                        <div class="alert alert-success fade in" style="margin-top:30px;">
+                                            <button class="close" data-dismiss="alert">
+                                              ×
+                                            </button>
+                                            <i class="fa-fw fa fa-info"></i>
+                                                Resumen del Curso<br><br>
+                                                Resalta el contenido del curso, cómo se imparte, sus beneficios y por qué deberían inscribirse los estudiantes.
+                                          </div>
+
+                                  </div>
+
+                                  <!-- Resumen del Curso -->
+
+                                    <div class="col-lg-12">
+                                      
+                                      
+                                           
+                                           
+                                          <div class="form-group">
+                                            <div class="input-group">
+                                              <span class="input-group-addon"><i class="fa fa-file-text-o  fa-lg fa-fw"></i></span>
+
+
+
+
+                                               <%= f.text_area :resumen, autocomplete: "off", class: "form-control input-lg", placeholder: "Resumen del Curso", :style => "padding-left:20px; padding-top:20px;", rows: "10" %>
+                                                
+                                               
+
+                                            </div>
+                                          </div>
+                                     
+
+                                    </div>
+
+                                  <!-- Resumen del Curso -->
+
+                                  <!-- Estatus -->
+
+                                    <div class="col-lg-12" style="display:none; " >
+
+                                      <%= f.text_field :status %>
+
+                                    </div>
+
+                                  <!-- Estatus -->
+
+                                  <!-- botones para guardar -->
+
+
+                                      <div class="col-lg-12" style="margin-top:20px; margin-bottom:20px;">
+                                        
+                                        <div class="col-lg-4" style="margin-right:20px;">
+                                          
+                                              <button style="height:40px;" type="submit" class="btn btn-success btn-md col-lg-12" data-toggle="#phoneInfo">
+                                             <span style="font-size:20px;">Guardar</span>
+                                            </button>
+
+                                        </div>
+
+                                        <div class="col-lg-4">
+                                          
+                                              <a href="/users/<%=current_user.id%>/cursos" style="height:40px;"  class="btn btn-danger btn-md col-lg-12" >
+                                             <span style="font-size:20px;">Atrás</span>
+                                            </a>
+
+                                        </div>
+                                          
+                                          
+                                       
+                                      </div>
+
+
+
+                                  <!-- botones para guardar -->
+
+
+
+
+                            
+
+
+                              </div>
+
+                                   
+                            <%end%>
+                          <!-- Informacion basica del curso -->
+
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<style>
+  .rd{
+    margin-right: 50px;
+  }
+
+  .idiomatxt, .categoriatxt, .subctxt{
+    display: none;
+  }
+</style>
+
+<% content_for :scripts do %>
+  <script type="text/javascript">
+
+
+/* idioma */
+$(".idiomaselect").change(function() {
+$( ".idiomatxt" ).val($( ".idiomaselect :selected" ).text());
+});
+/* idioma */
+
+/* categoria */
+$(".categoriaselect").change(function() {
+$( ".categoriatxt" ).val($( ".categoriaselect :selected" ).text());
+});
+/* categoria */
+
+/* subcategoria */
+$(".subc").change(function() {
+$( ".subctxt" ).val($( ".subc :selected" ).text());
+});
+/* subcategoria */
+
+
+
+
+/* Rellenar los combos */
+
+      $("#subcategoria_nombre").children().remove().end();
+      
+      $("#subcategoria_nombre").append('<option value="8">Seleccione una Subcategoria</option>');
+
+$("#categoria_nombre").change(function() {
+  
+    var cat = $( "#categoria_nombre option:selected" ).val();
+
+
+    if(cat == 1){
+      $("#subcategoria_nombre").children().remove().end();
+      
+      $("#subcategoria_nombre").append('<option value="8">Seleccione una Subcategoria</option>');
+      
+    }else if(cat == 2){
+      $("#subcategoria_nombre").children().remove().end();
+      
+      $("#subcategoria_nombre").append('<option value="8">Seleccione una Subcategoria</option><option value="8">Desarrollo web</option><option value="10">Aplicaciones móviles</option><option value="12">Lenguajes de programación</option><option value="14">Desarrollo de videojuegos</option><option value="16">Bases de datos</option><option value="18">Testeo de software</option><option value="20">Ingeniería de software</option><option value="354">Comercio electrónico</option><option value="362">Herramientas de desarrollo</option>');
+    }else if (cat == 3){
+
+      $("#subcategoria_nombre").children().remove().end();
+      
+      $("#subcategoria_nombre").append('<option value="8">Seleccione una Subcategoria</option><option value="24">Finanzas</option><option value="26">Emprendimiento</option><option value="28">Comunicación</option><option value="30">Gestión empresarial</option><option value="32">Ventas</option><option value="34">Estrategia</option><option value="36">Operaciones</option><option value="38">Gestión de proyectos</option><option value="40">Derecho empresarial</option><option value="44">Datos y análisis</option><option value="46">Negocios desde casa</option><option value="48">Recursos humanos</option><option value="50">Industria</option><option value="52">Medios de comunicación</option><option value="58">Bienes inmuebles</option><option value="60">Otros</option>');
+
+    }else if (cat == 4){
+
+
+      $("#subcategoria_nombre").children().remove().end();
+      
+      $("#subcategoria_nombre").append('<option value="8">Seleccione una Subcategoria</option><option value="132">Certificaciones de TI</option><option value="134">Redes y seguridad</option><option value="136">Hardware</option><option value="138">Sistemas operativos</option><option value="140">Otros</option>');
+
+    }else if (cat == 5){
+
+
+      $("#subcategoria_nombre").children().remove().end();
+      
+      $("#subcategoria_nombre").append('<option value="8">Seleccione una Subcategoria</option><option value="96">Microsoft</option><option value="98">Apple</option><option value="100">Google</option><option value="102">SAP</option><option value="104">Intuit</option><option value="106">Oracle</option><option value="108">Otros</option><option value="358">Salesforce</option>');
+
+    }else if (cat == 6){
+
+
+      $("#subcategoria_nombre").children().remove().end();
+      
+      $("#subcategoria_nombre").append('<option value="8">Seleccione una Subcategoria</option><option value="142">Transformación personal</option><option value="144">Productividad</option><option value="146">Liderazgo</option><option value="148">Finanzas personales</option><option value="150">Desarrollo profesional</option><option value="152">Paternidad y relaciones</option><option value="156">Felicidad</option><option value="158">Religión y espiritualidad</option><option value="160">Desarrollo de marca personal</option><option value="164">Creatividad</option><option value="166">Influencia</option><option value="168">Autoestima</option><option value="170">Gestión del estrés</option><option value="172">Memoria y técnicas de estudio</option><option value="176">Motivación</option><option value="178">Otros</option>');
+
+    }else if (cat == 7){
+
+
+      $("#subcategoria_nombre").children().remove().end();
+      
+      $("#subcategoria_nombre").append('<option value="8">Seleccione una Subcategoria</option><option value="6">Diseño web</option><option value="110">Diseño gráfico</option><option value="112">Herramientas de diseño</option><option value="114">Experiencia de usuario</option><option value="116">Diseño de juegos</option><option value="118">Design Thinking</option><option value="120">3D y animación</option><option value="122">Moda</option><option value="124">Diseño arquitectónico</option><option value="128">Diseño de interiores</option><option value="130">Otros</option>');
+
+    }else if (cat == 8){
+
+
+      $("#subcategoria_nombre").children().remove().end();
+      
+      $("#subcategoria_nombre").append('<option value="8">Seleccione una Subcategoria</option><option value="62">Marketing digital</option><option value="64">Optimización de motores de búsqueda</option><option value="66">Marketing de redes sociales</option><option value="68">Creación de marca</option><option value="70">Fundamentos de marketing</option><option value="72">Análisis y automatización</option><option value="74">Relaciones públicas</option><option value="76">Publicidad</option><option value="78">Marketing con vídeo y móviles</option><option value="80">Marketing de contenidos</option><option value="84">Marketing tradicional</option><option value="86">Estrategia de posicionamiento</option><option value="88">Marketing de afiliados</option><option value="90">Marketing de producto</option><option value="94">Otros</option>');
+
+    }else if (cat == 9){
+
+
+      $("#subcategoria_nombre").children().remove().end();
+      
+      $("#subcategoria_nombre").append('<option value="8">Seleccione una Subcategoria</option><option value="180">Artes y manualidades</option><option value="182">Comida y bebida</option><option value="184">Belleza y maquillaje</option><option value="186">Viajes</option><option value="188">Juegos</option><option value="190">Bricolaje</option><option value="192">Cuidado y entrenamiento de mascotas</option><option value="194">Otros</option>');
+
+    }else if (cat == 10){
+
+
+      $("#subcategoria_nombre").children().remove().end();
+      
+      $("#subcategoria_nombre").append('<option value="8">Seleccione una Subcategoria</option><option value="196">Fundamentos de fotografía</option><option value="198">Herramientas de fotografía</option><option value="200">Paisajes</option><option value="202">Fotografía móvil</option><option value="204">Retratos</option><option value="206">Blanco y negro</option><option value="208">Fotografía comercial</option><option value="210">Fotografía de viajes</option><option value="212">Fotografía para bodas</option><option value="216">Fotografía de naturaleza</option><option value="218">Diseño de video</option><option value="220">Otros</option><option value="370">Fotografía digital</option>');
+
+    }else if (cat == 11){
+
+
+      $("#subcategoria_nombre").children().remove().end();
+      
+      $("#subcategoria_nombre").append('<option value="8">Seleccione una Subcategoria</option><option value="222">Fitness</option><option value="224">Salud general</option><option value="226">Deportes</option><option value="228">Nutrición</option><option value="230">Yoga</option><option value="232">Salud mental</option><option value="234">Dietética</option><option value="236">Defensa personal</option><option value="238">Seguridad y primeros auxilios</option><option value="240">Baile</option><option value="242">Meditación</option><option value="244">Otros</option>');
+
+    }else if (cat == 12){
+
+
+      $("#subcategoria_nombre").children().remove().end();
+      
+      $("#subcategoria_nombre").append('<option value="8">Seleccione una Subcategoria</option><option value="246">Diseño educativo</option><option value="248">Desarrollo educativo</option><option value="250">Herramientas de enseñanza</option><option value="252">Otros</option>');
+
+    }else if (cat == 13){
+
+
+      $("#subcategoria_nombre").children().remove().end();
+      
+      $("#subcategoria_nombre").append('<option value="8">Seleccione una Subcategoria</option><option value="296">Instrumentos</option><option value="298">Producción</option><option value="300">Fundamentos sobre música</option><option value="302">Vocal</option><option value="304">Técnicas musicales</option><option value="306">Software de música</option><option value="308">Otros</option>');
+
+    }else if (cat == 14){
+
+
+      $("#subcategoria_nombre").children().remove().end();
+      
+      $("#subcategoria_nombre").append('<option value="8">Seleccione una Subcategoria</option><option value="376">Ciencias sociales</option><option value="378">Matemáticas y ciencias</option><option value="380">Humanidades</option>');
+
+    }else if (cat == 15){
+
+
+      $("#subcategoria_nombre").children().remove().end();
+      
+      $("#subcategoria_nombre").append('<option value="8">Seleccione una Subcategoria</option><option value="254">Inglés</option><option value="256">Español</option><option value="258">Alemán</option><option value="260">Francés</option><option value="262">Japonés</option><option value="264">Portugués</option><option value="266">Chino</option><option value="268">Ruso</option><option value="270">Latín</option><option value="272">Árabe</option><option value="274">Hebreo</option><option value="276">Italiano</option><option value="294">Otros</option>');
+
+    }else if (cat == 16){
+
+
+      $("#subcategoria_nombre").children().remove().end();
+      
+      $("#subcategoria_nombre").append('<option value="8">Seleccione una Subcategoria</option><option value="342">Examen de acceso a programas de posgrado</option><option value="344">Bachillerato internacional</option><option value="346">Examen de acceso a la universidad</option><option value="348">Técnicas de preparación para exámenes</option><option value="350">Otros</option>');
+
+    }
+
+});
+
+
+
+
+</script>
+<%end%>
